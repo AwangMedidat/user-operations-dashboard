@@ -53,12 +53,21 @@ async function UsersContent({ searchParams }: UsersPageProps) {
 
 export default function UsersPage({ searchParams }: UsersPageProps) {
   return (
-    <main className="min-h-screen p-6 max-w-7xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Users Operations Dashboard</h1>
+    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white p-6 md:p-10">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-10">
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900">
+            Users Operations Dashboard
+          </h1>
+          <p className="text-gray-600 mt-2 text-lg">
+            Monitor users, activity signals, posts, and todos.
+          </p>
+        </div>
 
-      <Suspense fallback={<LoadingUsersPage />}>
-        <UsersContent searchParams={searchParams} />
-      </Suspense>
+        <Suspense fallback={<LoadingUsersPage />}>
+          <UsersContent searchParams={searchParams} />
+        </Suspense>
+      </div>
     </main>
   );
 }

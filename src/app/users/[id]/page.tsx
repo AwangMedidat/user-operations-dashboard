@@ -1,13 +1,9 @@
-import { Suspense } from 'react';
-import { notFound } from 'next/navigation';
-import {
-  getUserById,
-  getPostsByUser,
-  getTodosByUser,
-} from '@/lib/api';
-import UserDetailsCard from '@/components/users/UserDetailsCard';
-import UserPostsTodos from '@/components/users/UserPostsTodos';
-import LoadingUserDetails from './loading';
+import { Suspense } from "react";
+import { notFound } from "next/navigation";
+import { getUserById, getPostsByUser, getTodosByUser } from "@/lib/api";
+import UserDetailsCard from "@/components/users/UserDetailsCard";
+import UserPostsTodos from "@/components/users/UserPostsTodos";
+import LoadingUserDetails from "./loading";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -25,8 +21,8 @@ export async function generateMetadata({ params }: Props) {
     };
   } catch {
     return {
-      title: 'User Not Found',
-      description: 'Requested user details could not be found.',
+      title: "User Not Found",
+      description: "Requested user details could not be found.",
     };
   }
 }
@@ -53,10 +49,10 @@ export default async function UserDetailsPage({ params }: Props) {
   const { id } = await params;
 
   return (
-    <main className="max-w-5xl mx-auto p-6">
-      <Suspense fallback={<LoadingUserDetails />}>
+    <Suspense fallback={<LoadingUserDetails />}>
+      <main className="max-w-5xl mx-auto p-6 w-full">
         <UserDetailsContent id={id} />
-      </Suspense>
-    </main>
+      </main>
+    </Suspense>
   );
 }
